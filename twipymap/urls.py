@@ -1,0 +1,75 @@
+from django.conf.urls import patterns, url
+
+
+
+from twipymap.views.location_views import *
+urlpatterns = patterns('',
+    url(
+        regex=r'^location/archive/$',
+        view=LocationArchiveIndexView.as_view(),
+        name='twipymap_location_archive_index'
+    ),
+    url(
+        regex=r'^location/create/$',
+        view=LocationCreateView.as_view(),
+        name='twipymap_location_create'
+    ),
+    url(
+        regex=r'^location/(?P<year>\d{4})/'
+               '(?P<month>\d{1,2})/'
+               '(?P<day>\d{1,2})/'
+               '(?P<pk>\d+?)/$',
+        view=LocationDateDetailView.as_view(),
+        name='twipymap_location_date_detail'
+    ),
+    url(
+        regex=r'^location/archive/(?P<year>\d{4})/'
+               '(?P<month>\d{1,2})/'
+               '(?P<day>\d{1,2})/$',
+        view=LocationDayArchiveView.as_view(),
+        name='twipymap_location_day_archive'
+    ),
+    url(
+        regex=r'^location/(?P<pk>\d+?)/delete/$',
+        view=LocationDeleteView.as_view(),
+        name='twipymap_location_delete'
+    ),
+    url(
+        regex=r'^location/(?P<pk>\d+?)/$',
+        view=LocationDetailView.as_view(),
+        name='twipymap_location_detail'
+    ),
+    url(
+        regex=r'^location/$',
+        view=LocationListView.as_view(),
+        name='twipymap_location_list'
+    ),
+    url(
+        regex=r'^location/archive/(?P<year>\d{4})/'
+               '(?P<month>\d{1,2})/$',
+        view=LocationMonthArchiveView.as_view(),
+        name='twipymap_location_month_archive'
+    ),
+    url(
+        regex=r'^location/today/$',
+        view=LocationTodayArchiveView.as_view(),
+        name='twipymap_location_today_archive'
+    ),
+    url(
+        regex=r'^location/(?P<pk>\d+?)/update/$',
+        view=LocationUpdateView.as_view(),
+        name='twipymap_location_update'
+    ),
+    url(
+        regex=r'^location/archive/(?P<year>\d{4})/'
+               '(?P<month>\d{1,2})/'
+               'week/(?P<week>\d{1,2})/$',
+        view=LocationWeekArchiveView.as_view(),
+        name='twipymap_location_week_archive'
+    ),
+    url(
+        regex=r'^location/archive/(?P<year>\d{4})/$',
+        view=LocationYearArchiveView.as_view(),
+        name='twipymap_location_year_archive'
+    ),
+)

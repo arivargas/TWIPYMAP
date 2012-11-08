@@ -1,0 +1,55 @@
+
+
+{% extends 'twipymap/location/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/Documents/Apptwipymap/twipymap/templates/twipymap/location/location_form.html
+{% endblock %}
+
+{% block title %}
+  {% if object %}
+    {% trans "Update Location" %}
+  {% else %}
+    {% trans "Create a New Location" %}
+  {% endif %}
+{% endblock %}
+
+{% block header-link %}
+  {% if object %}
+    <a href='{% url twipymap_location_update pk=object.pk %}'>
+      {% trans "Location Update" %}
+    </a>
+  {% else %}
+    <a href='{% url twipymap_location_create %}'>
+      {% trans "Location Create" %}
+    </a>
+  {% endif %}
+{% endblock %}
+
+{% block header-description %}
+  {% if object %}
+    {% trans "A view that displays a form for editing an existing object." %}
+  {% else %}
+    {% trans "A view that displays a form for creating an object." %}
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <form action='{% if object %}{% url twipymap_location_update pk=object.pk %}{% else %}{% url twipymap_location_create %}{% endif %}' method='post' encoding='utf-8'>
+    <fieldset>
+      {% csrf_token %}
+      {{ form }}
+      <div class='form-actions'>
+        <button class='btn btn-large btn-success' type='submit'>
+          {% if object %}
+            {% trans "Update" %}
+          {% else %}
+            {% trans "Create" %}
+          {% endif %}
+        </button>
+      </div>
+    </fieldset>
+  </form>
+{% endblock %}

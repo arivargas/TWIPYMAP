@@ -1,0 +1,71 @@
+
+
+{% load i18n %}
+
+<table class='table table-bordered table-striped'>
+  <thead>
+    <tr>
+      <th>
+        {% trans "Field" %}
+      </th>
+      <th>
+        {% trans "Value" %}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        id
+      </td>
+      <td>
+        <a href='{{ object.get_absolute_url }}'>
+          {{ object.id|stringformat:".3d" }}
+        </a>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        address
+      </td>
+      <td>{{ object.address }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        lat
+      </td>
+      <td>{{ object.lat }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        lon
+      </td>
+      <td>{{ object.lon }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        link
+      </td>
+      <td>{{ object.link }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        created_at
+      </td>
+      <td>{{ object.created_at }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        updated_at
+      </td>
+      <td>{{ object.updated_at }}</td>
+    </tr>
+    
+  </tbody>
+</table>

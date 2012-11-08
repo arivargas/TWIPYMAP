@@ -1,0 +1,41 @@
+
+
+{% extends 'twipymap/location/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/Documents/Apptwipymap/twipymap/templates/twipymap/location/location_confirm_delete.html
+{% endblock %}
+
+{% block title %}
+  {% trans "Location Confirm Delete" %}
+{% endblock %}
+
+{% block header-link %}
+  <a href='{% url twipymap_location_delete pk=object.pk %}'>
+    {% trans "Location Confirm Delete" %}
+  </a>
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A view that displays a confirmation page (on GET) and deletes an existing object (on POST)." %}
+{% endblock %}
+
+{% block content %}
+  <h2>
+    {% trans "Delete this Location?" %}
+  </h2>
+  <br />
+  {% include 'twipymap/location/object_table_detail.html' %}
+  <form action='' charset='utf-8' method='post'>
+    <fieldset>
+      {% csrf_token %}
+      <div class='form-actions'>
+        <button class='btn btn-danger' type='submit'>
+          {% trans "Delete" %}
+        </button>
+      </div>
+    </fieldset>
+  </form>
+{% endblock %}

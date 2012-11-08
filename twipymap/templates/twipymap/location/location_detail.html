@@ -1,0 +1,84 @@
+
+
+{% extends 'twipymap/location/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/Documents/Apptwipymap/twipymap/templates/twipymap/location/location_detail.html
+{% endblock %}
+
+{% block title %}
+  {% trans "Location Detail" %}
+{% endblock %}
+
+
+{% block breadcrumbs %}
+  <ul class='breadcrumb'>
+    <li>
+      <a href='{% url twipymap_location_archive_index %}'>
+        {% trans "Archive Index" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url twipymap_location_year_archive year=object.created_at.year %}'>
+        {% trans "Year Archive" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url twipymap_location_month_archive year=object.created_at.year month=object.created_at.month %}'>
+        {% trans "Month Archive" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url twipymap_location_day_archive year=object.created_at.year month=object.created_at.month day=object.created_at.day %}'>
+        {% trans "Day Archive" %}
+      </a>
+      <span class='divider'>
+        /
+      </span>
+    </li>
+    <li>
+      <a href='{% url twipymap_location_date_detail year=object.created_at.year month=object.created_at.month day=object.created_at.day pk=object.pk %}'>
+        {% trans "Date Detail" %}
+      </a>
+    </li>
+  </ul>
+{% endblock %}
+
+
+{% block header-link %}
+  <a href='{{ object.get_absolute_url }}'>
+    {% trans "Location Detail" %}
+  </a>
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A page representing an individual object." %}
+{% endblock %}
+
+{% block content %}
+  {% include 'twipymap/location/object_table_detail.html' %}
+  <form action='{% url twipymap_location_delete pk=object.pk %}' charset='utf-8' method='post'>
+    <fieldset>
+      {% csrf_token %}
+      <div class='form-actions'>
+        <a class='btn btn-success' href='{% url twipymap_location_update pk=object.pk %}'>
+          {% trans "Update" %}
+        </a>
+        <button class='btn btn-danger' type='submit'>
+          {% trans "Delete" %}
+        </button>
+      </div>
+    </fieldset>
+  </form>
+{% endblock %}

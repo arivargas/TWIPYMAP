@@ -1,0 +1,31 @@
+
+
+{% extends 'twipymap/location/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/Documents/Apptwipymap/twipymap/templates/twipymap/location/location_archive_week.html
+{% endblock %}
+
+{% block title %}
+  {% trans "Location Week Archive" %}
+{% endblock %}
+
+{% block header-link %}
+  {% trans "Location Week Archive" %}
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A weekly archive page showing all objects in a given week." %}
+{% endblock %}
+
+{% block content %}
+  <h2>
+    {% blocktrans %}
+      Locations created during the week beginning on {{ week }}
+    {% endblocktrans %}
+  </h2>
+  {% include 'twipymap/location/object_table_list.html' %}
+  {% include 'twipymap/location/pagination.html' %}
+{% endblock %}

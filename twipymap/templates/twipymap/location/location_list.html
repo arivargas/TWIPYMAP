@@ -1,0 +1,27 @@
+
+
+{% extends 'twipymap/location/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/Documents/Apptwipymap/twipymap/templates/twipymap/location/location_list.html
+{% endblock %}
+
+{% block header-link %}
+  <a href='{% url twipymap_location_list %}'>
+    {% trans "Location List" %}
+  </a>
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A page representing a list of objects." %}
+{% endblock %}
+
+{% block content %}
+  <h2>
+    {% trans "Locations" %}
+  </h2>
+  {% include 'twipymap/location/object_table_list.html' %}
+  {% include 'twipymap/location/pagination.html' %}
+{% endblock %}
