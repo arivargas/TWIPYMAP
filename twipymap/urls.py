@@ -73,3 +73,76 @@ urlpatterns = patterns('',
         name='twipymap_location_year_archive'
     ),
 )
+
+
+from twipymap.views.contact_views import *
+urlpatterns += patterns('',
+    url(
+        regex=r'^contact/archive/$',
+        view=ContactArchiveIndexView.as_view(),
+        name='twipymap_contact_archive_index'
+    ),
+    url(
+        regex=r'^contact/create/$',
+        view=ContactCreateView.as_view(),
+        name='twipymap_contact_create'
+    ),
+    url(
+        regex=r'^contact/(?P<year>\d{4})/'
+               '(?P<month>\d{1,2})/'
+               '(?P<day>\d{1,2})/'
+               '(?P<pk>\d+?)/$',
+        view=ContactDateDetailView.as_view(),
+        name='twipymap_contact_date_detail'
+    ),
+    url(
+        regex=r'^contact/archive/(?P<year>\d{4})/'
+               '(?P<month>\d{1,2})/'
+               '(?P<day>\d{1,2})/$',
+        view=ContactDayArchiveView.as_view(),
+        name='twipymap_contact_day_archive'
+    ),
+    url(
+        regex=r'^contact/(?P<pk>\d+?)/delete/$',
+        view=ContactDeleteView.as_view(),
+        name='twipymap_contact_delete'
+    ),
+    url(
+        regex=r'^contact/(?P<pk>\d+?)/$',
+        view=ContactDetailView.as_view(),
+        name='twipymap_contact_detail'
+    ),
+    url(
+        regex=r'^contact/$',
+        view=ContactListView.as_view(),
+        name='twipymap_contact_list'
+    ),
+    url(
+        regex=r'^contact/archive/(?P<year>\d{4})/'
+               '(?P<month>\d{1,2})/$',
+        view=ContactMonthArchiveView.as_view(),
+        name='twipymap_contact_month_archive'
+    ),
+    url(
+        regex=r'^contact/today/$',
+        view=ContactTodayArchiveView.as_view(),
+        name='twipymap_contact_today_archive'
+    ),
+    url(
+        regex=r'^contact/(?P<pk>\d+?)/update/$',
+        view=ContactUpdateView.as_view(),
+        name='twipymap_contact_update'
+    ),
+    url(
+        regex=r'^contact/archive/(?P<year>\d{4})/'
+               '(?P<month>\d{1,2})/'
+               'week/(?P<week>\d{1,2})/$',
+        view=ContactWeekArchiveView.as_view(),
+        name='twipymap_contact_week_archive'
+    ),
+    url(
+        regex=r'^contact/archive/(?P<year>\d{4})/$',
+        view=ContactYearArchiveView.as_view(),
+        name='twipymap_contact_year_archive'
+    ),
+)

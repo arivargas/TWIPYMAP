@@ -1,0 +1,92 @@
+
+
+{% load i18n %}
+
+<table class='table table-bordered table-striped'>
+  <thead>
+    <tr>
+      <th>
+        {% trans "Field" %}
+      </th>
+      <th>
+        {% trans "Value" %}
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        id
+      </td>
+      <td>
+        <a href='{{ object.get_absolute_url }}'>
+          {{ object.id|stringformat:".3d" }}
+        </a>
+      </td>
+    </tr>
+    
+    <tr>
+      <td>
+        name
+      </td>
+      <td>{{ object.name }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        lastname
+      </td>
+      <td>{{ object.lastname }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        age
+      </td>
+      <td>{{ object.age }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        company
+      </td>
+      <td>{{ object.company }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        phone
+      </td>
+      <td>{{ object.phone }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        email
+      </td>
+      <td>{{ object.email }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        address
+      </td>
+      <td>{{ object.address }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        created_at
+      </td>
+      <td>{{ object.created_at }}</td>
+    </tr>
+    
+    <tr>
+      <td>
+        updated_at
+      </td>
+      <td>{{ object.updated_at }}</td>
+    </tr>
+    
+  </tbody>
+</table>

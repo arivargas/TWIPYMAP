@@ -1,0 +1,31 @@
+
+
+{% extends 'twipymap/contact/base.html' %}
+
+{% load i18n %}
+
+{% block filename %}
+  /home/usuario2012/Documents/Apptwipymap/twipymap/templates/twipymap/contact/contact_archive_week.html
+{% endblock %}
+
+{% block title %}
+  {% trans "Contact Week Archive" %}
+{% endblock %}
+
+{% block header-link %}
+  {% trans "Contact Week Archive" %}
+{% endblock %}
+
+{% block header-description %}
+  {% trans "A weekly archive page showing all objects in a given week." %}
+{% endblock %}
+
+{% block content %}
+  <h2>
+    {% blocktrans %}
+      Contacts created during the week beginning on {{ week }}
+    {% endblocktrans %}
+  </h2>
+  {% include 'twipymap/contact/object_table_list.html' %}
+  {% include 'twipymap/contact/pagination.html' %}
+{% endblock %}
